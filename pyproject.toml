@@ -1,0 +1,40 @@
+[project]
+name = "madnet"
+dynamic = ["version"]
+description = "Automatic debiasing of neural networks via moment-constrained learning"
+license = { file = "LICENSE" }
+authors = [{ name = "MADNet Authors" }]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "jax>=0.4.25",
+  "jaxlib>=0.4.25",
+  "equinox",
+  "optax",
+  "tqdm",
+  "requests",
+  "polars",
+  "rich",
+  "altair",
+  "scikit-learn",
+]
+
+[project.optional-dependencies]
+paper = ["matplotlib", "pyarrow", "vl-convert-python", "pyyaml"]
+
+[tool.setuptools.packages.find]
+namespaces = false
+
+[tool.setuptools_scm]
+version_scheme = "post-release"
+
+[tool.ruff]
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["F", "E", "W", "I", "N", "UP"]
+ignore = ["E402", "E501", "N802", "N803", "N806", "N817", "UP035"]
+
+[build-system]
+requires = ["setuptools >= 61.0", "setuptools-scm", "wheel"]
+build-backend = "setuptools.build_meta"

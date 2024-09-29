@@ -1,0 +1,29 @@
+fit_kwargs:
+  # Fast training step
+  - batch_size: 64
+    learning_rate: 0.0001
+    min_delta: 0.0
+    num_epochs: 100
+    optimizer: adamw
+    patience: 2
+    validation_size: 0.2
+    verbose: false
+    weight_decay: 0.001
+  # Fine-tuning step
+  - batch_size: 64
+    learning_rate: 0.00001
+    min_delta: 0.0
+    num_epochs: 600
+    optimizer: adamw
+    patience: 40
+    validation_size: 0.2
+    verbose: false
+    weight_decay: 0.001
+init_kwargs:
+  nonshared_depth: 2
+  shared_depth: 4
+  width_size: 200
+  lm_y: 0.0
+  lm_g: 5.0
+  binary: true
+learner: MADNet
