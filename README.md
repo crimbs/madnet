@@ -1,6 +1,12 @@
 # MADNet: Moment-constrained Automatic Debiasing Networks
 
+[![arXiv](https://img.shields.io/badge/arXiv-2409.19777-b31b1b.svg)](https://arxiv.org/abs/2409.19777)
+
 Code to accompany the paper: _Automatic debiasing of neural networks via moment-constrained learning_.
+
+### Abstract
+
+> Causal and nonparametric estimands in economics and biostatistics can often be viewed as the mean of a linear functional applied to an unknown outcome regression function. Naively learning the regression function and taking a sample mean of the target functional results in biased estimators, and a rich debiasing literature has developed where one additionally learns the so-called Riesz representer (RR) of the target estimand (targeted learning, double ML, automatic debiasing etc.). Learning the RR via its derived functional form can be challenging, e.g. due to extreme inverse probability weights or the need to learn conditional density functions. Such challenges have motivated recent advances in automatic debiasing (AD), where the RR is learned directly via minimization of a bespoke loss. We propose moment-constrained learning as a new RR learning approach that addresses some shortcomings in AD, constraining the predicted moments and improving the robustness of RR estimates to optimization hyperparamters. Though our approach is not tied to a particular class of learner, we illustrate it using neural networks, and evaluate on the problems of average treatment/derivative effect estimation using semi-synthetic data. Our numerical experiments show improved performance versus state of the art benchmarks.
 
 ## Set up
 
@@ -54,6 +60,22 @@ The package versions that were used to obtain the RieszNet IHDP values in Table 
 1. clone the [RieszLearning](https://github.com/victor5as/RieszLearning) repo.
 2. make a virtual environment and run `python -m pip install -r requirements-rieszlearning.txt`.
 3. run `RieszNet_IHDP.ipynb` notebook and use the output in `results/IHDP/RieszNet/MAE/IHDP_MAE_NN.tex`.
+
+## Citation
+
+If you found this work useful, please cite:
+
+```bibtex
+@misc{hines2024automaticdebiasingneuralnetworks,
+      title={Automatic debiasing of neural networks via moment-constrained learning},
+      author={Christian L. Hines and Oliver J. Hines},
+      year={2024},
+      eprint={2409.19777},
+      archivePrefix={arXiv},
+      primaryClass={stat.ML},
+      url={https://arxiv.org/abs/2409.19777},
+}
+```
 
 ## References
 
