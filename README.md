@@ -24,9 +24,15 @@ python paper/benchmark.py --dataset ihdp --numruns 1000 --config paper/madnet_at
 python paper/benchmark.py --dataset bhp --numruns 200 --config paper/madnet_ade.yaml
 ```
 
+To run synthetic data example
+
+```shell
+python example/example.py
+```
+
 ## Semi-synthetic datasets
 
-### BHP - Gasoline demand data from Blundell et al. (2017).
+### BHP - Gasoline demand data from Blundell et al. (2017)
 
 This data is shared in this repo under the public domain licence described at the [Harvard dataverse.](https://dataverse.harvard.edu/dataset.xhtml;jsessionid=ab284f8afb3805aad6f8c6b9ddca?persistentId=doi%3A10.7910%2FDVN%2F0YALNP&version=&q=&fileTypeGroupFacet=%22Data%22&fileAccess=&fileTag=&fileSortField=&fileSortOrder=)
 

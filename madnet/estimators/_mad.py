@@ -94,23 +94,22 @@ class MADNet(BaseEstimator):
             width_size: Neurons per layer. Defaults to 200.
             key: A `jax.random.key`. Keyword Only.
         """
-        del nonshared_depth  # unused
         super().__init__(estimand=estimand)
         if binary:
-            self.mlp = eqx.nn.MLP(
+            self.mlp = MultiHeadMLP(
                 in_size=covariate_dim + treatment_dim,
                 width_size=width_size,
-                depth=shared_depth,
-                out_size=3,
+                shared_depth=shared_depth,
+                nonshared_depths=(nonshared_depth, nonshared_depth, 0),
                 activation=jax.nn.elu,
                 key=key,
             )
         else:
-            self.mlp = eqx.nn.MLP(
+            self.mlp = MultiHeadMLP(
                 in_size=covariate_dim + treatment_dim,
                 width_size=width_size,
-                depth=shared_depth,
-                out_size=2,
+                shared_depth=shared_depth,
+                nonshared_depths=(nonshared_depth, 0),
                 activation=jax.nn.elu,
                 key=key,
             )
