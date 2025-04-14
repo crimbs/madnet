@@ -63,25 +63,24 @@ class RieszNet(BaseEstimator):
             regularization and mean squared error. Defaults to 0.1.
             key: A `jax.random.key`. Keyword Only.
         """
-        del nonshared_depth  # unused
         super().__init__(estimand=estimand)
         self.rr_weight = rr_weight
         self.target_reg = target_reg
         if binary:
-            self.mlp = eqx.nn.MLP(
+            self.mlp = MultiHeadMLP(
                 in_size=covariate_dim + treatment_dim,
                 width_size=width_size,
-                depth=shared_depth,
-                out_size=3,
+                shared_depth=shared_depth,
+                nonshared_depths=(nonshared_depth, nonshared_depth, 0),
                 activation=jax.nn.elu,
                 key=key,
             )
         else:
-            self.mlp = eqx.nn.MLP(
+            self.mlp = MultiHeadMLP(
                 in_size=covariate_dim + treatment_dim,
                 width_size=width_size,
-                depth=shared_depth,
-                out_size=2,
+                shared_depth=shared_depth,
+                nonshared_depths=(nonshared_depth, 0),
                 activation=jax.nn.elu,
                 key=key,
             )
